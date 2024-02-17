@@ -5,7 +5,7 @@
 # useful, but WITHOUT ANY WARRANTY; without even the implied 
 # warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-# REV34: Wed 31 Jan 2024 17:00
+# REV35: Sun 18 Feb 2024 05:00
 # REV33: Mon 11 Sep 2023 17:00
 # REV29: Mon 13 Feb 2023 13:30
 # REV19: Sun 05 Feb 2023 20:00
@@ -16,7 +16,7 @@
 # You new to set "REC2" with your own Public-Key Identity!
 # Check it out with "gpg --list-key"
 # ####################### Replace REC2 ####
-REC2="60914D29C01C81F1"
+REC2="VRTASS"
 # ####################### ####### #### ####
 # REC1: public key
 REC1="63FB12B215403B20"
@@ -109,8 +109,8 @@ echo "sha256sum -c $SHA"
 sha256sum -c $SHA
 
 echo "# ################# SIGNING CHECKSUM ######### ######### ########"
-echo "gpg --output $SHA.asc --armor --sign --detach-sign $SHA"
-gpg --output $SHA.asc --armor --sign --detach-sign $SHA
+echo "gpg --output $SHA.asc --armor --sign --local-user $REC2 --detach-sign $SHA"
+gpg --output $SHA.asc --armor --sign --local-user $REC2 --detach-sign $SHA
 
 echo "# ################# VERIFY ######### ######### ######### ########"
 echo "gpg --verify $SHA.asc $SHA"
